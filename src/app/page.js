@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience";
 import Ticker from "./Ticker";
+import { useEffect, useRef, useState } from "react";
 
 import { Rampart_One, Quicksand } from "next/font/google";
 
@@ -11,15 +12,57 @@ const rampart = Rampart_One({ subsets: ["latin"], weight: "400" });
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 export default function Home() {
+  const [isReady, setReady] = useState(false);
+
+  let windowWidth = useRef();
+  let fovValue = useRef();
+
+  function calculateFOV() {
+    if (windowWidth.current < 380) {
+      return 30;
+    } else if (windowWidth.current < 436) {
+      return 25;
+    } else if (windowWidth.current < 630) {
+      return 23;
+    } else if (windowWidth.current < 760) {
+      return 18;
+    } else if (windowWidth.current < 950) {
+      return 14;
+    } else if (windowWidth.current < 1080) {
+      return 13;
+    } else {
+      return 10;
+    }
+  }
+
+  useEffect(() => {
+    windowWidth.current = window.innerWidth;
+    fovValue.current = calculateFOV();
+    console.log(fovValue.current);
+    console.log(windowWidth.current);
+    window.addEventListener("resize", () => {
+      windowWidth.current = window.innerWidth;
+      fovValue.current = calculateFOV();
+      console.log(fovValue.current);
+      console.log(windowWidth.current);
+    });
+    setReady(true);
+  }, []);
+
+  // console.log(fovValue);
+
   return (
     <main className="flex flex-col min-h-screen h-screen">
-      <Canvas
-        className="h-full"
-        shadows
-        camera={{ position: [0, 0, 20], fov: 15 }}
-      >
-        <Experience className={rampart.className} />
-      </Canvas>
+      {isReady ? (
+        <Canvas
+          camera={{ fov: `${fovValue.current}` }}
+          className="h-full"
+          shadows
+        >
+          <Experience className={rampart.className} />
+        </Canvas>
+      ) : null}
+
       <div className={quicksand.className}>
         <div className="text-white fill-white flex flex-row justify-end gap-6 mb-4 mr-8 contact">
           aidennoel@proton.me
