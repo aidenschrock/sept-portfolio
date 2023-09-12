@@ -1,0 +1,54 @@
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  display: flex;
+  border-wdith: 1px 0 1px 0;
+  border-color: white;
+  padding: 4px 0 4px 0;
+  height: 3rem;
+  width: auto;
+  overflow: hidden;
+}
+
+.ticker {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  white-space: nowrap;
+  box-sizing: content-box;
+  color: white;
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 10s;
+  animation-duration: 30s;
+}

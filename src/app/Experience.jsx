@@ -4,6 +4,7 @@ import {
   N8AO,
   TiltShift2,
 } from "@react-three/postprocessing";
+import { BlendFunction } from "postprocessing";
 import {
   Text,
   Html,
@@ -94,7 +95,7 @@ export default function Experience() {
         />
       </Environment>
       <EffectComposer disableNormalPass>
-        <Noise />
+        <Noise blendFunction={BlendFunction.OVERLAY} />
         <N8AO aoRadius={1} intensity={2} />
         <TiltShift2 blur={0.1} />
       </EffectComposer>
