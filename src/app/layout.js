@@ -2,10 +2,10 @@
 
 import "./globals.css";
 
-export const metadata = {
-  title: "Aiden Schrock",
-  description: "Creative 3D Web Developer",
-};
+// export const metadata = {
+//   title: "Aiden Schrock",
+//   description: "Creative 3D Web Developer",
+// };
 
 export default function RootLayout({ children }) {
   return (
