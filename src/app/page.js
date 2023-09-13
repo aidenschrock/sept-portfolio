@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience";
 import Ticker from "./Ticker";
-import { useEffect, useRef, useState } from "react";
 
 import { Rampart_One, Quicksand } from "next/font/google";
 
@@ -19,19 +18,22 @@ export default function Home() {
 
   function calculateFOV() {
     if (windowWidth.current < 380) {
-      return 35;
+      return 40;
     } else if (windowWidth.current < 436) {
-      return 25;
+      return 30;
     } else if (windowWidth.current < 630) {
-      return 23;
+      return 29;
     } else if (windowWidth.current < 760) {
+      return 27;
+    } else if (windowWidth.current < 900) {
+      return 24
+    }
+    else if (windowWidth.current < 1080) {
+      return 22;
+    } else if (windowWidth.current < 1440) {
       return 18;
-    } else if (windowWidth.current < 950) {
-      return 14;
-    } else if (windowWidth.current < 1080) {
-      return 13;
     } else {
-      return 10;
+      return 16;
     }
   }
 
@@ -52,11 +54,11 @@ export default function Home() {
   // console.log(fovValue);
 
   return (
-    <main className="flex flex-col h-screen">
-      <div className="h-1/3 xs:h-1/2 sm:h-3/4 md:h-2/5 lg:h-full">
+    <main className="flex flex-col min-h-screen h-screen">
+      {isReady ? (
         <Canvas
-          // camera={{ fov: `${fovValue.current}` }}
-
+          camera={{ fov: `${fovValue.current}` }}
+          className="h-full"
           shadows
         >
           <Experience className={rampart.className} />
