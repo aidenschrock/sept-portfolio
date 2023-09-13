@@ -18,10 +18,21 @@ import {
 
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
+import { useState, useEffect } from "react";
 
 export default function Experience() {
+  const [isMobile, setIsMobile] = useState();
+
+  useEffect(() => {
+    if (window.innerWidth < 500) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  }, []);
+
   const Knot = (props) => (
-    <mesh position={[0, 0, 2]} receiveShadow castShadow {...props}>
+    <mesh receiveShadow castShadow {...props}>
       <torusKnotGeometry args={[3, 0.7, 256, 32]} />
       <MeshTransmissionMaterial thickness={1} />
     </mesh>
@@ -54,27 +65,67 @@ export default function Experience() {
       state.camera.lookAt(0, 0, 0);
     });
   }
+
+  function DesktopTemplate() {
+    return (
+      <>
+        <Text fontSize={2} style={{ color: "white" }} position={[0, 2, 0]}>
+          Creative 3D Web Developer | Based in Austin, TX
+        </Text>
+        <Text
+          scale={6}
+          position={[0, -2, 0]}
+          font="./rampart.woff"
+          letterSpacing={0.058}
+        >
+          Aiden Schrock
+        </Text>
+
+        <Float>
+          <Knot position={[0, 0, 2]} />
+        </Float>
+      </>
+    );
+  }
+
+  function MobileTemplate() {
+    return (
+      <>
+        <Text fontSize={1.5} style={{ color: "white" }} position={[0, 6, 0]}>
+          Creative 3D Web Developer
+        </Text>
+        <Text fontSize={1.5} style={{ color: "white" }} position={[0, 4, 0]}>
+          | Based in Austin, TX
+        </Text>
+        <Text
+          scale={6}
+          position={[0, -2, 0]}
+          font="./rampart.woff"
+          letterSpacing={0.058}
+        >
+          Aiden
+        </Text>
+        <Text
+          scale={6}
+          position={[0, -8, 0]}
+          font="./rampart.woff"
+          letterSpacing={0.058}
+        >
+          Schrock
+        </Text>
+        <Float>
+          <Knot position={[0, -6, 2]} />
+        </Float>
+      </>
+    );
+  }
   return (
     <>
       <color args={["#000000"]} attach="background" />
 
       <spotLight position={[10, 20, 5]} penumbra={1} castShadow angle={0.2} />
+      {isMobile ? <MobileTemplate /> : <DesktopTemplate />}
 
-      <Text fontSize={2} style={{ color: "white" }} position={[0, 2, 0]}>
-        Creative 3D Web Developer | Based in Austin, TX
-      </Text>
-      <Text
-        scale={6}
-        position={[0, -2, 0]}
-        font="./rampart.woff"
-        letterSpacing={0.058}
-      >
-        Aiden Schrock
-      </Text>
-      <Float>
-        <Knot />
-        {/* <CatmullRomLine /> */}
-      </Float>
       <ContactShadows
         scale={100}
         position={[0, -7.5, 0]}

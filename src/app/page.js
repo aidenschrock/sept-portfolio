@@ -13,7 +13,7 @@ const quicksand = Quicksand({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main className="flex flex-col h-screen">
-      <div className="h-[230px] xs:h-[340px] sm:h-[450px] md:h-[550px] lg:h-full">
+      <div className="h-[450px] xs:h-[500px] sm:h-[450px] md:h-[550px] lg:h-full">
         <Canvas className="h-full" shadows>
           <Experience className={rampart.className} />
         </Canvas>
