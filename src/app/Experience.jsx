@@ -16,13 +16,22 @@ import {
   Environment,
 } from "@react-three/drei";
 
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { easing } from "maath";
+import { useEffect } from "react";
+
+
 
 export default function Experience() {
+  // let windowWidth = useRef();
+  // let fovValue = useRef();
+  const { viewport } = useThree()
+  const camera = useThree(state => state.camera)
+
+  console.log(viewport)
   const Knot = (props) => (
     <mesh position={[0, 0, 2]} receiveShadow castShadow {...props}>
-      <torusKnotGeometry args={[0.5, 0.1, 256, 32]} />
+      <torusKnotGeometry args={[0.2, 0.05, 256, 32]} />
       <MeshTransmissionMaterial thickness={1} />
     </mesh>
   );
@@ -38,6 +47,52 @@ export default function Experience() {
       <CatmullRomLine points={linePoints} />
     </mesh>
   );
+  // useFrame((state, delta) => {
+  //   fov = state.camera.fov
+  // })
+  // function customCamera() {
+
+  // }
+
+  function calculateFOV() {
+    if (viewport.width < 5) {
+      return 43;
+    } else if (viewport.width < 20) {
+      return 30;
+    } else if (viewport.width < 25) {
+      return 29;
+    } else if (viewport.width < 30) {
+      return 27;
+    } else if (viewport.width < 35) {
+      return 24
+    }
+    else if (viewport.width < 40) {
+      return 22;
+    } else if (viewport.width < 45) {
+      return 18;
+    } else {
+      return 16;
+    }
+  }
+
+
+
+  useEffect(() => {
+    console.log(viewport.width)
+
+    // let fovValue = calculateFOV();
+
+
+    camera.fov = calculateFOV()
+
+    window.addEventListener("resize", () => {
+
+      camera.fov = calculateFOV()
+      console.log(camera.fov)
+      console.log(viewport.width)
+
+    });
+  })
 
   function Rig() {
     useFrame((state, delta) => {
@@ -59,25 +114,14 @@ export default function Experience() {
       <color args={["#000000"]} attach="background" />
 
       <spotLight position={[10, 20, 5]} penumbra={1} castShadow angle={0.2} />
-      {/* <Html style={{ color: "white" }} position={[0, 2, 0]} >
-        Creative 3D Web Developer | Based in Austin, TX
-      </Html> */}
-      <Text fontSize={0.3} style={{ color: "white" }} position={[0, 1, 0]}>
+      <Text fontSize={.15} style={{ color: "white" }} position={[0, .5, 0]}>
         Creative 3D Web Developer | Based in Austin, TX
       </Text>
-      <Text position={[0, 0, 0]} font="./rampart.woff" letterSpacing={0.058}>
+      <Text scale={.5} position={[0, 0, 0]} font="./rampart.woff" letterSpacing={0.058}>
         Aiden Schrock
-        <Html
-          style={{ fontSize: "2.6em", color: "transparent" }}
-          position={[0, 0.12, 0]}
-          transform
-        >
-          Aiden Schrock
-        </Html>
       </Text>
       <Float>
         <Knot />
-        {/* <CatmullRomLine /> */}
       </Float>
       <ContactShadows
         scale={100}
@@ -100,7 +144,7 @@ export default function Experience() {
         <TiltShift2 blur={0.1} />
       </EffectComposer>
 
-      <Rig />
+      {/* <Rig /> */}
     </>
   );
 }

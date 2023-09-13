@@ -12,59 +12,57 @@ const rampart = Rampart_One({ subsets: ["latin"], weight: "400" });
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 export default function Home() {
-  const [isReady, setReady] = useState(false);
+  // const [isReady, setReady] = useState(false);
 
-  let windowWidth = useRef();
-  let fovValue = useRef();
+  // let windowWidth = useRef();
+  // let fovValue = useRef();
 
-  function calculateFOV() {
-    if (windowWidth.current < 380) {
-      return 40;
-    } else if (windowWidth.current < 436) {
-      return 30;
-    } else if (windowWidth.current < 630) {
-      return 29;
-    } else if (windowWidth.current < 760) {
-      return 27;
-    } else if (windowWidth.current < 900) {
-      return 24
-    }
-    else if (windowWidth.current < 1080) {
-      return 22;
-    } else if (windowWidth.current < 1440) {
-      return 18;
-    } else {
-      return 16;
-    }
-  }
+  // function calculateFOV() {
+  //   if (windowWidth.current < 380) {
+  //     return 40;
+  //   } else if (windowWidth.current < 436) {
+  //     return 30;
+  //   } else if (windowWidth.current < 630) {
+  //     return 29;
+  //   } else if (windowWidth.current < 760) {
+  //     return 27;
+  //   } else if (windowWidth.current < 900) {
+  //     return 24
+  //   }
+  //   else if (windowWidth.current < 1080) {
+  //     return 22;
+  //   } else if (windowWidth.current < 1440) {
+  //     return 18;
+  //   } else {
+  //     return 16;
+  //   }
+  // }
 
-  useEffect(() => {
-    windowWidth.current = window.innerWidth;
-    fovValue.current = calculateFOV();
-    console.log(fovValue.current);
-    console.log(windowWidth.current);
-    window.addEventListener("resize", () => {
-      windowWidth.current = window.innerWidth;
-      fovValue.current = calculateFOV();
-      console.log(fovValue.current);
-      console.log(windowWidth.current);
-    });
-    setReady(true);
-  }, []);
+  // useEffect(() => {
+  //   windowWidth.current = window.innerWidth;
+  //   fovValue.current = calculateFOV();
+  //   console.log(fovValue.current);
+  //   console.log(windowWidth.current);
+  //   window.addEventListener("resize", () => {
+  //     windowWidth.current = window.innerWidth;
+  //     fovValue.current = calculateFOV();
+  //     console.log(fovValue.current);
+  //     console.log(windowWidth.current);
+  //   });
+  //   setReady(true);
+  // }, []);
 
-  // console.log(fovValue);
 
   return (
     <main className="flex flex-col min-h-screen h-screen">
-      {isReady ? (
-        <Canvas
-          camera={{ fov: `${fovValue.current}` }}
-          className="h-full"
-          shadows
-        >
-          <Experience className={rampart.className} />
-        </Canvas>
-      ) : null}
+
+      <Canvas
+
+        shadows
+      >
+        <Experience className={rampart.className} />
+      </Canvas>
+
 
       <div className={quicksand.className}>
         <div className="text-white fill-white flex flex-row justify-end gap-6 mb-4 mr-8 contact">
