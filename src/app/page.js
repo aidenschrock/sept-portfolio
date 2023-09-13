@@ -11,56 +11,10 @@ const rampart = Rampart_One({ subsets: ["latin"], weight: "400" });
 const quicksand = Quicksand({ subsets: ["latin"] });
 
 export default function Home() {
-  const [isReady, setReady] = useState(false);
-
-  let windowWidth = useRef();
-  let fovValue = useRef();
-
-  function calculateFOV() {
-    if (windowWidth.current < 380) {
-      return 40;
-    } else if (windowWidth.current < 436) {
-      return 30;
-    } else if (windowWidth.current < 630) {
-      return 29;
-    } else if (windowWidth.current < 760) {
-      return 27;
-    } else if (windowWidth.current < 900) {
-      return 24
-    }
-    else if (windowWidth.current < 1080) {
-      return 22;
-    } else if (windowWidth.current < 1440) {
-      return 18;
-    } else {
-      return 16;
-    }
-  }
-
-  useEffect(() => {
-    windowWidth.current = window.innerWidth;
-    fovValue.current = calculateFOV();
-    console.log(fovValue.current);
-    console.log(windowWidth.current);
-    window.addEventListener("resize", () => {
-      windowWidth.current = window.innerWidth;
-      fovValue.current = calculateFOV();
-      console.log(fovValue.current);
-      console.log(windowWidth.current);
-    });
-    setReady(true);
-  }, []);
-
-  // console.log(fovValue);
-
   return (
-    <main className="flex flex-col min-h-screen h-screen">
-      {isReady ? (
-        <Canvas
-          camera={{ fov: `${fovValue.current}` }}
-          className="h-full"
-          shadows
-        >
+    <main className="flex flex-col h-screen">
+      <div className="h-1/3 xs:h-1/2 sm:h-3/4 md:h-2/5 lg:h-full">
+        <Canvas className="h-full" shadows>
           <Experience className={rampart.className} />
         </Canvas>
       </div>
