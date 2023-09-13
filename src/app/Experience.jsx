@@ -38,18 +38,6 @@ export default function Experience() {
     </mesh>
   );
 
-  const linePoints = [
-    [0, 0, 0],
-    [1, 1, 0],
-    [3, 3, 0],
-  ];
-
-  const CatmullRomLine = (props) => (
-    <mesh>
-      <CatmullRomLine points={linePoints} />
-    </mesh>
-  );
-
   function Rig() {
     useFrame((state, delta) => {
       easing.damp3(
@@ -142,7 +130,7 @@ export default function Experience() {
         />
       </Environment>
       <EffectComposer disableNormalPass>
-        <Noise blendFunction={BlendFunction.OVERLAY} />
+        {/* <Noise blendFunction={BlendFunction.OVERLAY} /> */}
         <N8AO aoRadius={1} intensity={2} />
         <TiltShift2 blur={0.1} />
       </EffectComposer>
