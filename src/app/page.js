@@ -20,7 +20,7 @@ export default function Home() {
       </div>
       <div className="flex flex-col">
         <div>
-          <div className="text-white fill-white flex flex-row justify-end gap-6 mb-4 mr-8 contact">
+          <div className="text-[#ebe6e1] fill-[#ebe6e1] flex flex-row justify-end gap-6 mb-4 mr-8 contact">
             <div className={quicksand.className}>aidennoel@proton.me</div>
             <a
               className="w-6 h-6"

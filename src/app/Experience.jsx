@@ -57,7 +57,7 @@ export default function Experience() {
   function DesktopTemplate() {
     return (
       <>
-        <Text fontSize={2} style={{ color: "white" }} position={[0, 2, 0]}>
+        <Text fontSize={2} color={"#ebe6e1"} position={[0, 2, 0]}>
           Creative 3D Web Developer | Based in Austin, TX
         </Text>
         <Text
@@ -65,6 +65,7 @@ export default function Experience() {
           position={[0, -2, 0]}
           font="./rampart.woff"
           letterSpacing={0.058}
+          color={"#ebe6e1"}
         >
           Aiden Schrock
         </Text>
@@ -79,10 +80,10 @@ export default function Experience() {
   function MobileTemplate() {
     return (
       <>
-        <Text fontSize={1.5} style={{ color: "white" }} position={[0, 6, 0]}>
+        <Text fontSize={1.5} color={"#ebe6e1"} position={[0, 6, 0]}>
           Creative 3D Web Developer
         </Text>
-        <Text fontSize={1.5} style={{ color: "white" }} position={[0, 4, 0]}>
+        <Text fontSize={1.5} color={"#ebe6e1"} position={[0, 4, 0]}>
           | Based in Austin, TX
         </Text>
         <Text
@@ -90,6 +91,7 @@ export default function Experience() {
           position={[0, -2, 0]}
           font="./rampart.woff"
           letterSpacing={0.058}
+          color={"#ebe6e1"}
         >
           Aiden
         </Text>
@@ -97,6 +99,7 @@ export default function Experience() {
           scale={6}
           position={[0, -8, 0]}
           font="./rampart.woff"
+          color={"#ebe6e1"}
           letterSpacing={0.058}
         >
           Schrock
@@ -109,8 +112,7 @@ export default function Experience() {
   }
   return (
     <>
-      <color args={["#000000"]} attach="background" />
-
+      <color attach="background" args={["#070606"]} />
       <spotLight position={[10, 20, 5]} penumbra={1} castShadow angle={0.2} />
       {isMobile ? <MobileTemplate /> : <DesktopTemplate />}
 

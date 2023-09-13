@@ -27,7 +27,7 @@
 .ticker-wrap {
   display: flex;
   border-wdith: 1px 0 1px 0;
-  border-color: white;
+  border-color: #ebe6e1;
   padding: 4px 0 4px 0;
 
   width: auto;
@@ -41,7 +41,7 @@
   height: 100%;
   white-space: nowrap;
   box-sizing: content-box;
-  color: white;
+  color: #ebe6e1;
 
   -webkit-animation-iteration-count: infinite;
   animation-iteration-count: infinite;
