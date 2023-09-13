@@ -22,7 +22,7 @@ import { easing } from "maath";
 export default function Experience() {
   const Knot = (props) => (
     <mesh position={[0, 0, 2]} receiveShadow castShadow {...props}>
-      <torusKnotGeometry args={[0.5, 0.1, 256, 32]} />
+      <torusKnotGeometry args={[3, 0.7, 256, 32]} />
       <MeshTransmissionMaterial thickness={1} />
     </mesh>
   );
@@ -59,21 +59,17 @@ export default function Experience() {
       <color args={["#000000"]} attach="background" />
 
       <spotLight position={[10, 20, 5]} penumbra={1} castShadow angle={0.2} />
-      {/* <Html style={{ color: "white" }} position={[0, 2, 0]} >
-        Creative 3D Web Developer | Based in Austin, TX
-      </Html> */}
-      <Text fontSize={0.3} style={{ color: "white" }} position={[0, 1, 0]}>
+
+      <Text fontSize={2} style={{ color: "white" }} position={[0, 2, 0]}>
         Creative 3D Web Developer | Based in Austin, TX
       </Text>
-      <Text position={[0, 0, 0]} font="./rampart.woff" letterSpacing={0.058}>
+      <Text
+        scale={6}
+        position={[0, -2, 0]}
+        font="./rampart.woff"
+        letterSpacing={0.058}
+      >
         Aiden Schrock
-        <Html
-          style={{ fontSize: "2.6em", color: "transparent" }}
-          position={[0, 0.12, 0]}
-          transform
-        >
-          Aiden Schrock
-        </Html>
       </Text>
       <Float>
         <Knot />

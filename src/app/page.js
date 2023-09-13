@@ -19,7 +19,7 @@ export default function Home() {
 
   function calculateFOV() {
     if (windowWidth.current < 380) {
-      return 30;
+      return 35;
     } else if (windowWidth.current < 436) {
       return 25;
     } else if (windowWidth.current < 630) {
@@ -52,16 +52,16 @@ export default function Home() {
   // console.log(fovValue);
 
   return (
-    <main className="flex flex-col min-h-screen h-screen">
-      {isReady ? (
+    <main className="flex flex-col h-screen">
+      <div className="h-1/3 xs:h-1/2 sm:h-3/4 md:h-2/5 lg:h-full">
         <Canvas
-          camera={{ fov: `${fovValue.current}` }}
-          className="h-full"
+          // camera={{ fov: `${fovValue.current}` }}
+
           shadows
         >
           <Experience className={rampart.className} />
         </Canvas>
-      ) : null}
+      </div>
 
       <div className={quicksand.className}>
         <div className="text-white fill-white flex flex-row justify-end gap-6 mb-4 mr-8 contact">
