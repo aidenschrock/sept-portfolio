@@ -19,19 +19,22 @@ export default function Home() {
 
   function calculateFOV() {
     if (windowWidth.current < 380) {
-      return 30;
+      return 40;
     } else if (windowWidth.current < 436) {
-      return 25;
+      return 30;
     } else if (windowWidth.current < 630) {
-      return 23;
+      return 29;
     } else if (windowWidth.current < 760) {
+      return 27;
+    } else if (windowWidth.current < 900) {
+      return 24
+    }
+    else if (windowWidth.current < 1080) {
+      return 22;
+    } else if (windowWidth.current < 1440) {
       return 18;
-    } else if (windowWidth.current < 950) {
-      return 14;
-    } else if (windowWidth.current < 1080) {
-      return 13;
     } else {
-      return 10;
+      return 16;
     }
   }
 
