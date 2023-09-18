@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <main className="flex flex-col h-screen justify-between">
       <div className="h-[450px] xs:h-[500px] sm:h-[450px] md:h-[550px] lg:h-full">
-        <Canvas className="h-full" shadows>
+        <Canvas className="h-full">
           <Experience className={rampart.className} />
         </Canvas>
       </div>

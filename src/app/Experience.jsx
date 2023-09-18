@@ -1,17 +1,9 @@
-import {
-  EffectComposer,
-  Noise,
-  N8AO,
-  TiltShift2,
-} from "@react-three/postprocessing";
-import { BlendFunction } from "postprocessing";
+import { EffectComposer, TiltShift2 } from "@react-three/postprocessing";
+
 import {
   Text,
-  Html,
   MeshTransmissionMaterial,
   Float,
-  Stage,
-  ContactShadows,
   Lightformer,
   Environment,
 } from "@react-three/drei";
@@ -32,7 +24,7 @@ export default function Experience() {
   }, []);
 
   const Knot = (props) => (
-    <mesh receiveShadow castShadow {...props}>
+    <mesh {...props}>
       <torusKnotGeometry args={[3, 0.7, 256, 32]} />
       <MeshTransmissionMaterial thickness={1} />
     </mesh>
@@ -57,12 +49,12 @@ export default function Experience() {
   function DesktopTemplate() {
     return (
       <>
-        <Text fontSize={2} color={"#ebe6e1"} position={[0, 2, 0]}>
+        <Text fontSize={2} color={"#ebe6e1"} position={[0, 4, 0]}>
           Creative 3D Web Developer | Based in Austin, TX
         </Text>
         <Text
           scale={6}
-          position={[0, -2, 0]}
+          position={[0, 0, 0]}
           font="./rampart.woff"
           letterSpacing={0.058}
           color={"#ebe6e1"}
@@ -112,17 +104,10 @@ export default function Experience() {
   }
   return (
     <>
-      <color attach="background" args={["#070606"]} />
-      <spotLight position={[10, 20, 5]} penumbra={1} castShadow angle={0.2} />
+      {/* <color attach="background" args={["#070606"]} /> */}
+      <spotLight position={[0, 5, 2]} />
       {isMobile ? <MobileTemplate /> : <DesktopTemplate />}
 
-      <ContactShadows
-        scale={100}
-        position={[0, -7.5, 0]}
-        blur={1}
-        far={100}
-        opacity={0.85}
-      />
       <Environment preset="city">
         <Lightformer
           intensity={4}
@@ -132,9 +117,7 @@ export default function Experience() {
         />
       </Environment>
       <EffectComposer disableNormalPass>
-        {/* <Noise blendFunction={BlendFunction.OVERLAY} /> */}
-        <N8AO aoRadius={1} intensity={2} />
-        <TiltShift2 blur={0.1} />
+        <TiltShift2 blur={0.05} />
       </EffectComposer>
 
       <Rig />
