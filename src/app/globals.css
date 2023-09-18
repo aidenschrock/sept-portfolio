@@ -2,51 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* html,
-body,
-:root {
- 
-  background-color: #000000;
-
-  background-image: url("../../public/pattern.png");
-} */
-
 :root {
   background-color: #000000;
 }
-/* body {
-  background-image: url("../../public/pattern.png");
-} */
+
 .contact {
   /* width: 100%; */
   align-items: right;
   text-align: right;
 }
-
-/* #canvas {
-  height: 100vh;
-  width: 100vw;
-} */
-/* :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */
-
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */

@@ -1,11 +1,12 @@
 "use client";
 import "./globals.css";
-import Image from "next/image";
 import { Canvas } from "@react-three/fiber";
 import Experience from "./Experience";
 import Ticker from "./Ticker";
+import Loading from "./Loader/Loading";
 
 import { Rampart_One, Quicksand } from "next/font/google";
+import { Suspense } from "react";
 
 const rampart = Rampart_One({ subsets: ["latin"], weight: "400" });
 const quicksand = Quicksand({ subsets: ["latin"] });
@@ -13,10 +14,13 @@ const quicksand = Quicksand({ subsets: ["latin"] });
 export default function Home() {
   return (
     <main className="flex flex-col h-screen justify-between">
-      <div className="h-[450px] xs:h-[500px] sm:h-[450px] md:h-[550px] lg:h-full">
+      <Loading className="z-10" />
+      <div className="h-[450px] xs:h-[500px] sm:h-[450px] md:h-[550px] lg:h-full z-0">
+        {/* <Suspense fallback={<Loading />}> */}
         <Canvas className="h-full">
           <Experience className={rampart.className} />
         </Canvas>
+        {/* </Suspense> */}
       </div>
       <div className="flex flex-col">
         <div>
