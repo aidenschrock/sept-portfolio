@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <main className="flex flex-col h-screen justify-between">
       <Loading className="z-10" />
-      <div className="h-[450px] xs:h-[500px] sm:h-[450px] md:h-[550px] lg:h-full z-0">
+      <div className="h-[430px] xs:h-[500px] sm:h-[450px] md:h-[550px] lg:h-full z-0">
         {/* <Suspense fallback={<Loading />}> */}
         <Canvas className="h-full">
           <Experience className={rampart.className} />
@@ -24,8 +24,8 @@ export default function Home() {
       </div>
       <div className="flex flex-col">
         <div>
-          <div className="text-[#ebe6e1] fill-[#ebe6e1] flex flex-row justify-end gap-6 mb-4 mr-8 contact">
-            <div className={quicksand.className}>aidennoel@proton.me</div>
+          <div className="text-[#ebe6e1] text-lg sm:text-xl font-semibold fill-[#ebe6e1] flex flex-row justify-end gap-6 mb-4 mr-8 contact">
+            <div className={quicksand.className}>aidenschrock3D@gmail.com</div>
             <a
               className="w-6 h-6"
               target="_blank"
